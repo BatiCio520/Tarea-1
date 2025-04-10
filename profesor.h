@@ -54,7 +54,7 @@ public:
     void setTiempoEstimado(int tiempo);
     void setSolucion(const string& solucion);
 
-    // Método para mostrar (siguiendo el estilo del ejemplo, sin const)
+    // Método para mostrar
     void mostrar();
 };
 
