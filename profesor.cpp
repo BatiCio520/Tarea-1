@@ -13,12 +13,13 @@ Pregunta::Pregunta(int id, string enunciado, string tipo, string nivel, int tiem
 
 
 //getters
-int Pregunta::getId() { return id; }
-string Pregunta::getEnunciado() { return enunciado; }
-string Pregunta::getTipo() { return tipo; }
-string Pregunta::getNivelTaxonomico() { return nivelTaxonomico; }
-int Pregunta::getTiempoEstimado() { return tiempoEstimado; }
-string Pregunta::getSolucion() { return solucion; }
+int Pregunta::getId() const { return id; } 
+string Pregunta::getEnunciado() const { return enunciado; } 
+string Pregunta::getTipo() const { return tipo; } 
+string Pregunta::getNivelTaxonomico() const { return nivelTaxonomico; } 
+int Pregunta::getTiempoEstimado() const { return tiempoEstimado; } 
+string Pregunta::getSolucion() const { return solucion; } 
+
 
 //setters
 void Pregunta::setId(int id) { this->id = id; }
@@ -27,7 +28,7 @@ void Pregunta::setTipo(const string& tipo) { this->tipo = tipo; }
 void Pregunta::setNivelTaxonomico(const string& nivel) { this->nivelTaxonomico = nivel; }
 void Pregunta::setTiempoEstimado(int tiempo) { this->tiempoEstimado = tiempo; }
 void Pregunta::setSolucion(const string& solucion) { this->solucion = solucion; }
-void Pregunta::mostrar() {
+void Pregunta::mostrar() const {
     cout << "----------------------------------------\n";
     cout << "ID: " << getId() << "\n";
     cout << "Enunciado: " << getEnunciado() << "\n";
@@ -38,36 +39,41 @@ void Pregunta::mostrar() {
     cout << "----------------------------------------\n";
 }
 
-// --- Clase profesor
+// --- Implementación Clase Profesor ---
 Profesor::Profesor() : numeroDePreguntasActual(0), proximoId(1) {
+    // Llama a cargarPreguntas usando la constante definida en profesor.h
     cargarPreguntas();
 }
 Profesor::~Profesor() {
+    // Llama a guardarPreguntas usando la constante definida en profesor.h
     guardarPreguntas();
 }
-void Profesor::limpiarBufferEntrada() const{
-    cin.ignore(numeric_limits<streamsize>::max(), '\n');
 
+void Profesor::limpiarBufferEntrada() const {
+     // Usa std::numeric_limits (requiere <limits>)
+     cin.ignore(std::numeric_limits<streamsize>::max(), '\n');
 }
-bool Profesor::validarNivelTaxonomico(const string& nivel) const{
-    for(int i=0; i<NIVELES_TAXONOMIA; i++) if(NIVELES[i]== nivel) return true;
-    return false;
-}
-bool Profesor::validarTipoPregunta(const string& tipo) const{
-    for(int i=0; i<NUM_TIPOS_PREGUNTA; i++) if(TIPOS_PREGUNTA[i] == tipo) return true;
-    return false;
+bool Profesor::validarNivelTaxonomico(const string& nivel) const {
     
+    for(int i = 0; i < NIVELES_TAXONOMIA; ++i) if (NIVELES[i] == nivel) return true;
+    return false;
+}
+bool Profesor::validarTipoPregunta(const string& tipo) const {
+    
+     for(int i = 0; i < NUM_TIPOS_PREGUNTA; ++i) if (TIPOS_PREGUNTA[i] == tipo) return true;
+    return false;
 }
 int Profesor::buscarIndicePreguntaPorId(int id) const {
+    // Usa el getter de Pregunta
     for (int i = 0; i < numeroDePreguntasActual; ++i) if (bancoDePreguntas[i].getId() == id) return i;
     return -1;
 }
 
 // Función para cargar preguntas desde un archivo
 void Profesor::cargarPreguntas() {
-    ifstream archivoEntrada(bancoDePreguntas.txt);
+    ifstream archivoEntrada(NOMBRE_ARCHIVO_PREGUNTAS);
     if (!archivoEntrada.is_open()) {
-        cout << "Advertencia: No se encontró '" << bancoDePreguntas.txt << "'. Iniciando vacío." << endl;
+        cout << "Advertencia: No se encontró '" << NOMBRE_ARCHIVO_PREGUNTAS << "'. Iniciando vacío." << endl;
         return;
     }
     string linea;
@@ -117,6 +123,18 @@ void Profesor::cargarPreguntas() {
     }
     archivoEntrada.close();
     proximoId = maxId + 1;
-    cout << "Info: Se cargaron " << numeroDePreguntasActual << " preguntas desde '" << NOMBRE_ARCHIVO_PREGUNTAS << "'." << endl;
+    cout << "Info: Se cargaron " << numeroDePreguntasActual << " preguntas desde '" << bancoDePreguntas << "'." << endl;
 }
 
+void Profesor::mostrarMenu() { 
+    cout << "\n--- Gestión de Preguntas para Evaluaciones ---\n";
+    cout << "1. Agregar Nueva Pregunta\n";
+    cout << "2. Consultar Todas las Preguntas\n";
+    cout << "3. Actualizar Pregunta por ID\n";
+    cout << "4. Borrar Pregunta por ID\n";
+    cout << "5. Buscar Preguntas por Nivel Taxonómico\n";
+    cout << "6. Generar Evaluación\n";
+    cout << "0. Salir\n";
+    cout << "---------------------------------------------\n";
+    cout << "Ingrese su opción: ";
+}

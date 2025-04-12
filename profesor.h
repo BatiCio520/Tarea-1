@@ -8,7 +8,7 @@ using namespace std;
 
 // --- Constantes ---
 const int MAX_PREGUNTAS = 100;
-const string NOMBRE_ARCHIVO_PREGUNTAS = "banco_preguntas.txt"; 
+const string NOMBRE_ARCHIVO_PREGUNTAS = "bancoDePreguntas.txt"; 
 const int NIVELES_TAXONOMIA = 6;
 const string NIVELES[NIVELES_TAXONOMIA] = {
     "Recordar", "Entender", "Aplicar", "Analizar", "Evaluar", "Crear"
@@ -32,19 +32,21 @@ private:
 public:
     Pregunta();
     Pregunta(int id, string enunciado, string tipo, string nivel, int tiempo, string solucion);
-    int getId();
-    string getEnunciado();
-    string getTipo();
-    string getNivelTaxonomico();
-    int getTiempoEstimado();
-    string getSolucion();
+    // Getters (Ahora const)
+    int getId() const;
+    string getEnunciado() const;
+    string getTipo() const;
+    string getNivelTaxonomico() const;
+    int getTiempoEstimado() const; 
+    string getSolucion() const; 
     void setId(int id);
     void setEnunciado(const string& enunciado);
     void setTipo(const string& tipo);
     void setNivelTaxonomico(const string& nivel);
     void setTiempoEstimado(int tiempo);
     void setSolucion(const string& solucion);
-    void mostrar();
+    // Mostrar (También debe ser const)
+    void mostrar() const;
 };
 
 // --- Clase Profesor ---
