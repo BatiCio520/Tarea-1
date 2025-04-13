@@ -1,0 +1,35 @@
+// --- Introducción a la Programación ---
+101|2|Respuesta Corta|Recordar|¿Qué palabra clave se usa en muchos lenguajes para definir una función o método?|function, def, void, static, etc. (depende del lenguaje enseñado)
+102|4|Verdadero/Falso|Recordar|El operador '==' se usa para asignar un valor a una variable.|Falso (se usa para comparación, '=' es para asignación)
+103|5|Opción Múltiple|Entender|¿Cuál es el propósito de la indentación (sangría) en Python?|Definir bloques de código
+104|6|Composición/Ensayo|Entender|Describe qué es una variable y por qué son útiles en programación.|Espacio de memoria con nombre para guardar datos que pueden cambiar; permiten manipular información.
+105|7|Respuesta Corta|Aplicar|Si x=10 y y=3, ¿cuál es el resultado de la operación x % y (módulo)?|1
+106|8|Verdadero/Falso|Aplicar|El siguiente código imprimirá 'Hola' 5 veces: for(int i=1; i<=5; i++){ cout << "Hola"; }|Verdadero
+107|10|Composición/Ensayo|Analizar|Dado el código: if(a > 5){ print "Mayor"; } else { print "Menor o Igual"; }, ¿qué se imprime si 'a' vale 5? Explica por qué.|Se imprime "Menor o Igual", porque la condición a > 5 no es verdadera (5 no es mayor que 5).
+108|5|Respuesta Corta|Entender|¿Qué diferencia hay entre un argumento y un parámetro en una función?|Parámetro es la variable en la definición de la función, argumento es el valor pasado al llamar la función.
+109|12|Composición/Ensayo|Crear|Diseña (en pseudocódigo) una función simple que reciba dos números y devuelva el mayor de ellos.|FUNCION encontrarMayor(num1, num2): SI num1 > num2 ENTONCES DEVOLVER num1 SINO DEVOLVER num2 FIN SI FIN FUNCION
+110|4|Opción Múltiple|Recordar|¿Qué tipo de dato usarías típicamente para almacenar el nombre de una persona?|String (Cadena de texto)
+
+// --- Algoritmos y Estructura de Datos ---
+201|3|Respuesta Corta|Recordar|¿Cuál es el nombre del algoritmo de ordenamiento que compara repetidamente pares adyacentes y los intercambia si están en orden incorrecto?|Bubble Sort (Ordenamiento Burbuja)
+202|5|Verdadero/Falso|Recordar|Un árbol binario de búsqueda siempre está balanceado.|Falso
+203|6|Opción Múltiple|Entender|¿Qué estructura de datos utiliza el principio FIFO (First-In, First-Out)?|Cola (Queue)
+204|7|Composición/Ensayo|Entender|Explica qué significa que un algoritmo tenga una complejidad temporal de O(n).|El tiempo de ejecución crece linealmente con el tamaño de la entrada 'n'.
+205|8|Respuesta Corta|Aplicar|En una lista enlazada simple, ¿qué necesitas modificar para insertar un nuevo nodo al principio?|El puntero 'head' o 'inicio' de la lista.
+206|10|Verdadero/Falso|Aplicar|Si buscas el número 5 en el arreglo ordenado [2, 4, 6, 8, 10] usando búsqueda binaria, lo encontrarás en la primera comparación.|Falso (La primera comparación sería con 6)
+207|12|Composición/Ensayo|Analizar|¿En qué situación podría ser preferible usar Merge Sort sobre Quick Sort, a pesar de que Quick Sort suele ser más rápido en promedio?|Cuando la estabilidad del ordenamiento es importante o se requiere garantía de rendimiento O(n log n) en el peor caso.
+208|5|Respuesta Corta|Recordar|¿Qué estructura de datos se usa comúnmente para representar conexiones en redes sociales o mapas?|Grafo (Graph)
+209|15|Composición/Ensayo|Evaluar|Considerando memoria y tiempo, ¿qué estructura (Array, Lista Enlazada, Hash Table) elegirías para implementar un diccionario donde necesitas búsquedas muy rápidas por clave? Justifica.|Hash Table (Tabla Hash), porque ofrece búsqueda promedio O(1) si las colisiones se manejan bien, aunque puede usar más memoria.
+210|7|Opción Múltiple|Entender|La recursividad en un algoritmo implica que...|La función se llama a sí misma.
+
+// --- Bases de Datos ---
+301|2|Respuesta Corta|Recordar|¿Qué comando SQL se usa para añadir nuevas filas a una tabla?|INSERT INTO
+302|4|Verdadero/Falso|Recordar|La cláusula 'GROUP BY' en SQL se usa para ordenar los resultados.|Falso (se usa para agrupar filas; ORDER BY ordena)
+303|5|Opción Múltiple|Entender|¿Cuál de las siguientes NO es una propiedad ACID de las transacciones?|Consistencia, Atomicidad, Durabilidad, (Correcta: Concurrencia - no es ACID)|Concurrencia
+304|7|Composición/Ensayo|Entender|¿Qué es una Foreign Key (Clave Foránea) y cuál es su propósito?|Columna(s) en una tabla que referencia(n) la Clave Primaria de otra tabla; mantener integridad referencial.
+305|6|Respuesta Corta|Aplicar|Escribe la cláusula SQL para eliminar un registro de la tabla 'Productos' donde el ID es 50.|DELETE FROM Productos WHERE ID = 50;
+306|8|Verdadero/Falso|Aplicar|Si haces un LEFT JOIN entre TablaA y TablaB (A LEFT JOIN B), siempre obtendrás todas las filas de TablaB.|Falso (Obtendrás todas las filas de TablaA)
+307|10|Composición/Ensayo|Analizar|Explica la diferencia entre la Primera Forma Normal (1NF) y la Segunda Forma Normal (2NF) en la normalización de bases de datos.|1NF: Elimina grupos repetitivos, cada celda valor atómico. 2NF: Cumple 1NF y todos los atributos no clave dependen completamente de la clave primaria completa (no de parte de ella).
+308|5|Opción Múltiple|Recordar|¿Qué tipo de base de datos es MongoDB?|NoSQL (Documentos)
+309|12|Composición/Ensayo|Evaluar|¿Por qué podría ser problemático usar SELECT * en una aplicación en producción en lugar de especificar las columnas necesarias?|Consume más ancho de banda, puede exponer datos sensibles, la aplicación puede fallar si se añaden/quitan columnas, menos eficiente para el SGBD.
+310|6|Respuesta Corta|Entender|¿Qué hace la función de agregación COUNT() en SQL?|Cuenta el número de filas que cumplen una condición (o todas las filas).
