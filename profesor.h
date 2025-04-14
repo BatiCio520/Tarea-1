@@ -15,8 +15,8 @@ const string NIVELES[NIVELES_TAXONOMIA] = {
 };
 const int NUM_TIPOS_PREGUNTA = 5;
 const string TIPOS_PREGUNTA[NUM_TIPOS_PREGUNTA] = {
-    "Opción Múltiple", "Verdadero/Falso", "Respuesta Corta",
-    "Composición/Ensayo", "Emparejamiento"
+    "Opcion Múltiple", "Verdadero/Falso", "Respuesta Corta",
+    "Composicion/Ensayo", "Emparejamiento"
 };
 
 
@@ -77,7 +77,7 @@ public:
     void consultarPreguntas();
     void actualizarPregunta();
     void borrarPregunta();
-    void buscarPreguntasPorTaxonomia();
+    void buscarPreguntasPorTaxonomia() const;
     void generarEvaluacion();
 };
 

@@ -1,27 +1,26 @@
-#include "profesor.h" 
-#include <limits>    
+#include "profesor.h"
+#include <limits>
+#include <iostream> 
 
 int main() {
     Profesor miGestor;
-    int opcion = -1; 
+    int opcion = -1;
 
-    // Bucle principal del menú
     do {
-        miGestor.mostrarMenu(); // Muestra las opciones al usuario
+        miGestor.mostrarMenu();
 
-        // Leer y validar la opción ingresada por el usuario
-        while (!(cin >> opcion)) { // Mientras la lectura falle (no sea un número)
-            cout << "Entrada inválida. Por favor ingrese un número: ";
-            cin.clear(); // Limpiar el estado de error de cin
-            // Descartar la entrada incorrecta del buffer hasta el salto de línea
+        
+        while (!(cin >> opcion)) {
+            cout << "Entrada invalida. Por favor ingrese un numero: "; 
+            cin.clear();
             cin.ignore(std::numeric_limits<streamsize>::max(), '\n');
         }
+
         if (opcion != 0) {
             miGestor.ejecutarOpcion(opcion);
         }
 
-    } while (opcion != 0); // Repetir mientras no se elija la opción 0 (Salir)
+    } while (opcion != 0);
 
-
-    return 0; // Fin del programa
+    return 0;
 }
